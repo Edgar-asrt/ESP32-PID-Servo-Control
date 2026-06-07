@@ -1,3 +1,33 @@
+/*This project implements an embedded closed-loop position control system for a modified servo motor using an ESP32 and FreeRTOS.
+
+The original servo controller was removed, allowing direct access to the DC motor and feedback potentiometer. The potentiometer is connected to the ESP32 
+
+ADC inputs and used as the position feedback sensor, while the motor is driven through an H-bridge using bidirectional PWM control.
+
+The system features a configurable PID controller with anti-windup protection and derivative filtering. Control parameters and setpoint can be adjusted 
+
+either locally through analog potentiometers or remotely through a SCADA/LabVIEW interface via UART communication.
+
+An SSD1306 OLED display provides real-time monitoring of system variables including position, setpoint, PID gains, error, and PWM output. 
+
+The firmware is built on FreeRTOS and uses multiple concurrent tasks for ADC acquisition, PID computation, UART communication, OLED updates, 
+
+and user input handling.
+
+Key Features:
+
+* Closed-loop position control
+* PID controller with tunable gains
+* Bidirectional H-bridge motor control
+* Real-time parameter adjustment
+* UART communication with SCADA/LabVIEW
+* SSD1306 OLED interface
+* FreeRTOS multitasking architecture
+* Disturbance injection for control system testing
+* ESP-IDF based implementation
+*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
